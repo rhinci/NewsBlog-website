@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Крутой новостной блог</title>
-</head>
-<body>
-    <h1>Добро пожаловать в новостной блог!</h1>
-    <h2>{% now "Y-m-d G:i:s" %}</h2>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %} Крутой новостной блок {% endblock title%}
+
+{% block body %}
+
+<h1>Добро пожаловать в новостной блок!</h1>
+
+{% endblock body %}
