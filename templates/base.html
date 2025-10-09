@@ -6,8 +6,12 @@
     <title>{% block title %} base title {% endblock title %}</title>
 </head>
 <body>
+    {% block content %}
+
+    {% endblock content %}
+    
     {% block body %} 
-    base body
+    
     {% endblock body %}
 </body>
 </html>
