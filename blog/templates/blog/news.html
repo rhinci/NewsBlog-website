@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %}
+{% block body %}
 <h1>{{ article.title }}</h1>
   <div>
     {{ article.content }}
@@ -7,4 +7,4 @@
   {% if article.date %}
     <p>Опубликовано: {{ article.date }}</p>
   {% endif %}
-{% endblock content %}
+{% endblock body %}
