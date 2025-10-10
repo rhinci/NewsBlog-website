@@ -1,1 +1,28 @@
 {% extends "base.html" %}
+
+{% block body %}
+<h2>Будем рады вашему отзыву</h2>
+<form method="post" action="">
+  {% csrf_token %}
+  <div>
+    {{ form.name }}<br>
+    {% for err in form.name.errors %}<small style="color:red">{{ err }}</small><br>{% endfor %}
+  </div>
+  <div>
+    {{ form.email }}<br>
+    {% for err in form.email.errors %}<small style="color:red">{{ err }}</small><br>{% endfor %}
+  </div>
+  <div>
+    {{ form.message }}<br>
+    {% for err in form.message.errors %}<small style="color:red">{{ err }}</small><br>{% endfor %}
+  </div>
+
+  <button type="submit">Отправить</button>
+</form>
+
+{% if messages %}
+  {% for m in messages %}
+    {{ m }}
+  {% endfor %}
+{% endif %}
+{% endblock body %}
