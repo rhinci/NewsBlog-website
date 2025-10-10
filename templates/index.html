@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Крутой новостной блок {% endblock title%}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock head %}
+
 {% block body %}
 
-<h1>Добро пожаловать в новостной блог!</h1>
-<ul>
+<h1 class="page-title">Добро пожаловать в новостной блог!</h1>
+<ul class="articles">
 {% for article in articles %}
     <li>
     <a href="{% url 'news' id=article.id %}">{{ article.title }}</a>
-    <span>{{ article.date }}</span>
-    {% if article.is_new %}<strong>Новое!</strong>{% endif %}
+    {% if article.is_new %}<strong class="badge-new">Новое!</strong>{% endif %}
+    <span class="date">{{ article.date }}</span>
     </li>
 {% endfor %}
 </ul>
