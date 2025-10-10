@@ -10,6 +10,7 @@
     <li>
     <a href="{% url 'news' id=article.id %}">{{ article.title }}</a>
     <span>{{ article.date }}</span>
+    {% if article.is_new %}<strong>Новое!</strong>{% endif %}
     </li>
 {% endfor %}
 </ul>

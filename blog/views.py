@@ -11,7 +11,13 @@ ARTICLES = [
 ]
 
 def index(request):
-    return render(request, 'index.html', {'articles': ARTICLES})
+    today = datetime.date.today()
+    articles = []
+    for a in ARTICLES:
+        a_copy = a.copy()
+        a_copy['is_new'] = (a['date'] == today)
+        articles.append(a_copy)
+    return render(request, 'index.html', {'articles': articles})
 
 def about(request):
     return render(request, 'blog/about.html')
