@@ -1,18 +1,39 @@
 <!DOCTYPE html>
+{% load static %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('main-nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function () {
+    const shown = nav.classList.toggle('show');
+    btn.setAttribute('aria-expanded', shown ? 'true' : 'false');
+  });
+});
+</script>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} base title {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="{% url "index" %}">Главная</a></li>
-            <li><a href="{% url "about" %}">О нас</a></li>
-            <li><a href="{% url "contacts" %}">Контакты</a></li>
-            <li><a href="{% url "feedback" %}">Отзывы</a></li>
+        <div class="nav-inner">
+            <a class="brand" href="{% url 'index' %}">TimeLine</a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню">☰</button>
+        </div>
+        <ul id="main-nav" class="nav-list">
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'about' %}">О нас</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            <li><a href="{% url 'feedback' %}">Обратная связь</a></li>
         </ul>
+
     </nav>
     {% block body %} 
     
