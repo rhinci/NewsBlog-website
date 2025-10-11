@@ -1,12 +1,39 @@
-/* Минимальная стилизация для index.html */
-.page-title { margin: 0 0 18px; font-size: 28px; }
 
-.articles { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.articles li { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255,255,255,0.9); border-radius: 6px; }
+.page-title {
+    margin: 0 0 18px; 
+    font-size: 28px; }
 
-.articles a { color: #24201d; text-decoration: none; font-weight: 600; }
-.articles a:hover { text-decoration: underline; }
+.articles {
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: grid; 
+    gap: 12px; }
+.articles li { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; padding: 10px; 
+    background: rgba(255,255,255,0.9); 
+    border-radius: 6px; }
 
-.articles span.date { color: #666; font-size: 13px; margin-left: 12px; white-space: nowrap; }
+.articles a { 
+    color: #24201d; 
+    text-decoration: none; 
+    font-weight: 600; }
 
-.badge-new { background: #24201d; color: #d9d4c8; padding: 4px 8px; border-radius: 999px; font-size: 12px; margin-left: 10px; }
+.articles a:hover { 
+    text-decoration: underline; }
+
+.articles span.date { 
+    color: #666; 
+    font-size: 13px; 
+    margin-left: 12px; 
+    white-space: nowrap; }
+
+.badge-new { 
+    background: #24201d; 
+    color: #d9d4c8; 
+    padding: 4px 8px; 
+    border-radius: 999px; 
+    font-size: 12px; 
+    margin-left: 10px; }

@@ -1,22 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&display=swap');
 
-/* Сохраняем ваши базовые цвета и шрифты */
 body {
   background-color: #aba38f;
   font-family: "Nunito", sans-serif;
   margin: 0;
-  color: #24201d; /* читаемый текст на фоне */
+  color: #24201d;
 }
 
-/* Заголовки */
 h1, h2 {
   font-family: "Oswald", sans-serif;
   margin: 0 0 0.5rem 0;
 }
 
-/* Центрированный контейнер с боковыми отступами */
 .page-wrap {
-  min-height: calc(100vh - 64px); /* 64px = ожидаемая высота навигации; подкорректируйте при необходимости */
+  min-height: calc(100vh - 64px);
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 20px;
@@ -29,18 +26,15 @@ h1, h2 {
   min-height: 100%;
 }
 
-/* Основной блок контента */
 main, .content {
-  background: #d9d4c8; /* лёгкий белый фон для контраста */
+  background: #d9d4c8; 
   border-radius: 8px;
   padding: 18px;
   box-shadow: 0 1px 6px rgba(0,0,0,0.06);
 }
 
-/* Немного пространства между навигацией и контентом */
 nav + .page-wrap { padding-top: 16px; }
 
-/* Адаптив: уменьшаем боковые отступы на узких экранах */
 @media (max-width: 720px) {
   .page-wrap { padding: 18px 14px; }
   main, .content { padding: 14px; }
