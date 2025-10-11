@@ -1,5 +1,9 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block title %} Обратная связь {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+{% endblock head %}
 {% block body %}
 <h2>Будем рады вашему отзыву</h2>
 <form method="post" action="">
