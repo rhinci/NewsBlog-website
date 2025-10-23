@@ -13,10 +13,15 @@
 <ul class="articles">
 {% for article in articles %}
     <li>
-    <a href="{% url 'news' id=article.id %}">{{ article.title }}</a>
+    <a href="{% url 'news' article.object.id %}">{{ article.object.title }}</a>
     {% if article.is_new %}<strong class="badge-new">Новое!</strong>{% endif %}
-    <span class="date">{{ article.date }}</span>
+    <span class="date">{{ article.object.created_date|date:"d.m.Y H:i" }}</span>
+    <span class="autor">{{ article.object.user.username }}</span>
     </li>
+{% empty %}
+<p>Статей пока нет. Будьте первым, кто добавит статью!</p>
 {% endfor %}
+
+
 </ul>
 {% endblock body %}

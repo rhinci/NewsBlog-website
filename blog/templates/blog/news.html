@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block body %}
 <h1>{{ article.title }}</h1>
-  <div>
-    {{ article.content }}
-  </div>
-  {% if article.date %}
-    <p>Опубликовано: {{ article.date }}</p>
-  {% endif %}
+<p>Автор: {{ article.user }}</p>
+<div>
+  {{ article.text }}
+</div>
+<p>Опубликовано: {{ article.created_date|date:"d.m.Y H:i" }}</p>
 {% endblock body %}
