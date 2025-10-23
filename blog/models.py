@@ -10,3 +10,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    text = models.TextField(verbose_name='Текст комментария')
+    date = models.DateTimeField(default=timezone.now)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+    author_name = models.CharField(max_length=100, verbose_name='Имя автора')
+    
+    def __str__(self):
+        return f'Комментарий от {self.author_name} к статье "{self.article.title}"'
