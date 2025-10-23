@@ -7,5 +7,6 @@ urlpatterns = [
     path('contacts/', views.contacts, name='contacts'), 
     path('feedback/', views.feedback, name='feedback'),
     path('news/<int:id>/', views.news, name='news'),
+    path('create_article/', views.create_article, name='create_article'),
 #    path('feedback/success/', views.success, name='success_url'),
 ]

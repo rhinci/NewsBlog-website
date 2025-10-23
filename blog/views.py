@@ -3,9 +3,11 @@ import datetime
 from django.http import Http404
 from django import forms
 from .forms import ContactForm
+from .forms import ArticleForm
 from django.contrib import messages
 from .models import Article
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 
 
 # ARTICLES = [
@@ -54,3 +56,16 @@ def feedback(request):
 def news(request, id):
     article = get_object_or_404(Article, id=id)
     return render(request, 'blog/news.html', {'article': article})
+
+def create_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.user = User.objects.first()  # временное решение
+            article.save()
+            return redirect('index')
+    else:
+        form = ArticleForm()
+    
+    return render(request, 'blog/create_article.html', {'form': form})
