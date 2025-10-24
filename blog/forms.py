@@ -31,7 +31,3 @@ class CommentForm(forms.ModelForm):
             'text': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Введите ваш комментарий...'}),
             'author_name': forms.TextInput(attrs={'placeholder': 'Ваше имя'})
         }
-        labels = {
-            'author_name': 'Ваше имя',
-            'text': 'Комментарий'
-        }
