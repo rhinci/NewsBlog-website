@@ -4,6 +4,7 @@ from django.http import Http404
 from django import forms
 from .forms import ContactForm
 from .forms import ArticleForm
+from .forms import CommentForm
 from django.contrib import messages
 from .models import Article
 from django.shortcuts import render, get_object_or_404
@@ -55,7 +56,27 @@ def feedback(request):
 
 def news(request, id):
     article = get_object_or_404(Article, id=id)
-    return render(request, 'blog/news.html', {'article': article})
+    
+    if request.method == 'POST':
+        # Обработка отправки комментария
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.article = article  # Привязываем комментарий к статье
+            comment.save()
+            return redirect('news', id=article.id)  # Обновляем страницу
+    else:
+        form = CommentForm()
+    
+    # Получаем все комментарии к этой статье
+    comments = article.comments.all().order_by('-date')
+    
+    context = {
+        'article': article,
+        'form': form,
+        'comments': comments
+    }
+    return render(request, 'blog/news.html', context)
 
 def create_article(request):
     if request.method == 'POST':

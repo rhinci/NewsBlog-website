@@ -1,5 +1,6 @@
 from django import forms
 from .models import Article
+from .models import Comment
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -21,3 +22,16 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'text'] 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['author_name', 'text']
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Введите ваш комментарий...'}),
+            'author_name': forms.TextInput(attrs={'placeholder': 'Ваше имя'})
+        }
+        labels = {
+            'author_name': 'Ваше имя',
+            'text': 'Комментарий'
+        }
