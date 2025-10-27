@@ -31,6 +31,9 @@ class ArticleForm(forms.ModelForm):
             'text': forms.Textarea(attrs={
                 'placeholder': 'Текст вашей статьи',
                 'rows': 15
+            }),
+            'category': forms.Select(attrs={
+                'class': 'form-select'
             })
         }
 

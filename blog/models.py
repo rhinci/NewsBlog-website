@@ -3,10 +3,24 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Article(models.Model):
+    CATEGORY_CHOICES = [
+        ('news', 'Новости'),
+        ('technology', 'Технологии'),
+        ('science', 'Наука'),
+        ('art', 'Искусство'),
+        ('other', 'Другое'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORY_CHOICES,
+        default='news',
+        verbose_name='Категория'
+    )
 
     def __str__(self):
         return self.title
