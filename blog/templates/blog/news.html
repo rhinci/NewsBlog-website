@@ -7,6 +7,11 @@
 </div>
 <p>Опубликовано: {{ article.created_date|date:"d.m.Y H:i" }}</p>
 
+{% if user.is_authenticated and user == article.user %}
+    <div class="article-actions">
+        <a href="{% url 'edit_article' article.id %}" class="btn-edit">Редактировать</a>
+    </div>
+{% endif %}
 
 
 <div class="comments-section">

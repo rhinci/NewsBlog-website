@@ -23,7 +23,16 @@ class ContactForm(forms.Form):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'text'] 
+        fields = ['title', 'text']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'placeholder': 'Заголовок'
+            }),
+            'text': forms.Textarea(attrs={
+                'placeholder': 'Текст вашей статьи',
+                'rows': 15
+            })
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:
