@@ -5,10 +5,14 @@ from django import forms
 from .forms import ContactForm
 from .forms import ArticleForm
 from .forms import CommentForm
+from .forms import RegisterForm
+from .forms import LoginForm
 from django.contrib import messages
 from .models import Article
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 # ARTICLES = [

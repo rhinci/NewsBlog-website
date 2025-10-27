@@ -8,5 +8,7 @@ urlpatterns = [
     path('feedback/', views.feedback, name='feedback'),
     path('news/<int:id>/', views.news, name='news'),
     path('create_article/', views.create_article, name='create_article'),
-#    path('feedback/success/', views.success, name='success_url'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]
