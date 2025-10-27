@@ -94,6 +94,27 @@ def create_article(request):
     
     return render(request, 'blog/create_article.html', {'form': form})
 
+@login_required
+def edit_article(request, id):
+    article = get_object_or_404(Article, id=id)
+
+    if article.user != request.user:
+        messages.error(request, "Вы можете редактировать только свои статьи")
+        return redirect('index')
+    
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('news', id=article.id)
+    else:
+        form = ArticleForm(instance=article)
+    
+    return render(request, 'blog/edit_article.html', {
+        'form': form, 
+        'article': article
+    })
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
