@@ -115,6 +115,18 @@ def edit_article(request, id):
         'article': article
     })
 
+@login_required
+def delete_article(request, id):
+    article = get_object_or_404(Article, id=id)
+
+    if article.user != request.user:
+        messages.error(request, "Вы можете удалять только свои статьи")
+        return redirect('index')
+
+    article.delete()
+    messages.success(request, "Статья успешно удалена")
+    return redirect('index')
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
