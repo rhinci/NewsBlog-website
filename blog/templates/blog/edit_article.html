@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Редактировать статью {% endblock title%}
+
+{% block body %}
+<div class="container">
+    <h1>Редактировать статью</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div>
+            {{ form.title }}<br>
+            {% for err in form.title.errors %}
+                <small style="color:red">{{ err }}</small><br>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.text }}<br>
+            {% for err in form.text.errors %}
+                <small style="color:red">{{ err }}</small><br>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" class="btn">Сохранить изменения</button>
+        <a href="{% url 'news' article.id %}" class="btn-cancel">Отмена</a>
+    </form>
+</div>
+{% endblock body %}
