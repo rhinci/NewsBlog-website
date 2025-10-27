@@ -62,17 +62,15 @@ def news(request, id):
     article = get_object_or_404(Article, id=id)
     
     if request.method == 'POST':
-        # Обработка отправки комментария
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.article = article  # Привязываем комментарий к статье
+            comment.article = article
             comment.save()
-            return redirect('news', id=article.id)  # Обновляем страницу
+            return redirect('news', id=article.id)
     else:
         form = CommentForm()
-    
-    # Получаем все комментарии к этой статье
+
     comments = article.comments.all().order_by('-date')
     
     context = {
@@ -82,12 +80,13 @@ def news(request, id):
     }
     return render(request, 'blog/news.html', context)
 
+@login_required
 def create_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
             article = form.save(commit=False)
-            article.user = User.objects.first()  # временное решение
+            article.user = request.user
             article.save()
             return redirect('index')
     else:
