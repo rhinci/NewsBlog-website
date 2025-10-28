@@ -11,6 +11,17 @@
 
 <h1 class="page-title">Добро пожаловать в новостной блог!</h1>
 
+
+<div class="categories-menu">
+    <strong>Категории:</strong>
+    <a href="?category=" class="{% if not current_category %}active{% endif %}">Все</a>
+    {% for value, label in categories %}
+        <a href="?category={{ value }}" class="{% if current_category == value %}active{% endif %}">
+            {{ label }}
+        </a>
+    {% endfor %}
+</div>
+
 <ul class="articles">
 {% for article in articles %}
     <li>
@@ -18,6 +29,7 @@
     {% if article.is_new %}<strong class="badge-new">Новое!</strong>{% endif %}
     <span class="date">{{ article.object.created_date|date:"d.m.Y H:i" }}</span>
     <span class="autor">{{ article.object.user.username }}</span>
+    <span class="category">[{{ article.object.get_category_display }}]</span>
     </li>
 {% empty %}
 <p>Статей пока нет. Будьте первым, кто добавит статью!</p>

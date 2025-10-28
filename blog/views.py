@@ -25,7 +25,12 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     today = datetime.date.today()
 
-    articles_list = Article.objects.all().order_by('-created_date')
+    category = request.GET.get('category', '')
+
+    if category:
+        articles_list = Article.objects.filter(category=category).order_by('-created_date')
+    else:
+        articles_list = Article.objects.all().order_by('-created_date')
 
     articles = []
     for article in articles_list:
@@ -34,7 +39,15 @@ def index(request):
             'object': article,
             'is_new': is_new
         })
-    return render(request, 'index.html', {'articles': articles})
+
+    categories = Article.CATEGORY_CHOICES
+    
+    context = {
+        'articles': articles,
+        'categories': categories,
+        'current_category': category
+    }
+    return render(request, 'index.html', context)
 
 def about(request):
     return render(request, 'blog/about.html')
