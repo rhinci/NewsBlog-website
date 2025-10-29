@@ -47,12 +47,15 @@ class CommentForm(forms.ModelForm):
         }
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True, label='Email')
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'E-mail'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Подтверждение пароля'}))
     
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(label='Имя пользователя')
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))

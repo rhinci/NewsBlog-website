@@ -1,33 +1,41 @@
-nav {
-    background-color: #24201d;
-    color: #d9d4c8;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.25);
-}
-
 .nav-list {
     display: flex;
     gap: 1rem;
     align-items: center;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 16px;
     min-height: 56px;
     height: auto;
 }
 
-nav .nav-container {
-    max-width: 1100px;
-    margin: 0 auto;
+/* ИЛИ более надежный вариант: */
+.user-actions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
+    gap: 1rem;
+    margin-left: auto;
+    padding-right: 0; /* Убираем внутренний отступ справа */
 }
 
-nav a {
+nav {
+    position: relative;
+}
+
+.user-hello {
+    color: #d9d4c8;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 14px;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* Стили для ссылок внутри user-actions */
+.user-actions a {
     display: inline-flex;
-    margin: 0;
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
@@ -37,42 +45,15 @@ nav a {
     font-weight: 500;
     font-size: 15px;
     transition: background-color 160ms ease, transform 120ms ease;
+    white-space: nowrap;
 }
 
-nav li {
-    display: block;
-}
-
-nav a:hover,
-nav a:focus {
+.user-actions a:hover {
     background-color: rgba(217,212,200,0.08);
-    outline: none;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 
-nav a.active {
-    background-color: rgba(217,212,200,0.14);
-    box-shadow: inset 0 -2px 0 rgba(217,212,200,0.12);
-}
-
-nav a:focus-visible {
-    box-shadow: 0 0 0 3px rgba(217,212,200,0.14);
-    border-radius: 8px;
-}
-
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #d9d4c8;
-    font-size: 22px;
-    padding: 10px;
-    margin-left: auto;
-    cursor: pointer;
-}
-
-@media (max-width:760px) {
+@media (max-width: 760px) {
     .nav-list {
         flex-direction: column;
         align-items: stretch;
@@ -80,11 +61,16 @@ nav a:focus-visible {
         padding: 8px 12px;
         display: none;
     }
-    .nav-list.show {
-        display: flex;
+    
+    .user-actions {
+        margin-left: 0;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        order: -1;
     }
-    .nav-toggle {
-        display: inline-flex;
-        margin-left: auto;
+    
+    .user-hello {
+        text-align: center;
     }
 }
