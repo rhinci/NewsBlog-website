@@ -2,10 +2,10 @@
 {% load static %}
 {% block title %} Обратная связь {% endblock title %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% endblock head %}
 {% block body %}
-<h2>Будем рады вашему отзыву</h2>
+<h1>Будем рады вашему отзыву</h1>
 <form method="post" action="">
   {% csrf_token %}
   <div>
