@@ -32,12 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <nav>
             <div class="nav-inner">
                 <a class="brand" href="{% url 'index' %}">TimeLine</a>
+                {% if user.is_authenticated %}
+                    <span class="user-hello">Привет, {{ user.username }}!</span>
+                {% endif %}
                 <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню">☰</button>
             </div>
-
-            {% if user.is_authenticated %}
-                <span class="user-hello">Привет, {{ user.username }}!</span>
-            {% endif %}
             
             <ul id="main-nav" class="nav-list">
                 <li><a href="{% url 'index' %}">Главная</a></li>

@@ -1,25 +1,26 @@
-.nav-list {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0 16px;
-    min-height: 56px;
-    height: auto;
-}
-
-/* ИЛИ более надежный вариант: */
-.user-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-left: auto;
-    padding-right: 0; /* Убираем внутренний отступ справа */
-}
 
 nav {
+    background-color: #24201d;
+    color: #d9d4c8;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.25);
     position: relative;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    min-height: 56px;
+    position: relative;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d9d4c8;
+    text-decoration: none;
 }
 
 .user-hello {
@@ -28,13 +29,27 @@ nav {
     font-size: 15px;
     padding: 10px 14px;
     white-space: nowrap;
-    position: absolute;
-    right: 0;
-    top: 0;
+    margin-left: auto;
+    margin-right: 50px;
 }
 
-/* Стили для ссылок внутри user-actions */
-.user-actions a {
+.nav-list {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0 16px 16px;
+    min-height: auto;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+nav a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -45,15 +60,38 @@ nav {
     font-weight: 500;
     font-size: 15px;
     transition: background-color 160ms ease, transform 120ms ease;
-    white-space: nowrap;
 }
 
-.user-actions a:hover {
+nav a:hover {
     background-color: rgba(217,212,200,0.08);
     transform: translateY(-1px);
 }
 
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #d9d4c8;
+    font-size: 22px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 @media (max-width: 760px) {
+    .nav-inner {
+        flex-wrap: wrap;
+    }
+    
+    .user-hello {
+        position: static;
+        transform: none;
+        order: 2;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+    
     .nav-list {
         flex-direction: column;
         align-items: stretch;
@@ -62,15 +100,19 @@ nav {
         display: none;
     }
     
-    .user-actions {
-        margin-left: 0;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.5rem;
-        order: -1;
+    .nav-list.show {
+        display: flex;
     }
     
-    .user-hello {
-        text-align: center;
+    .user-actions {
+        margin-right: 0;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-left: 0;
+    }
+    
+    .nav-toggle {
+        display: inline-flex;
     }
 }

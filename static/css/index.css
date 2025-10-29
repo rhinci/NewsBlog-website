@@ -11,6 +11,7 @@
     gap: 12px; }
 .articles li { 
     display: flex; 
+    flex-direction: column;
     justify-content: space-between; 
     align-items: center; padding: 10px; 
     background: rgba(255,255,255,0.9); 
@@ -27,7 +28,7 @@
 .articles span.date { 
     color: #666; 
     font-size: 13px; 
-    margin-left: 12px; 
+    margin: 12px; 
     white-space: nowrap; }
 
 .badge-new { 
@@ -36,4 +37,59 @@
     padding: 4px 8px; 
     border-radius: 999px; 
     font-size: 12px; 
-    margin-left: 10px; }
+    margin-left: 10px;
+}
+
+
+@media (min-width: 768px) {
+    .articles li { 
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .articles a {
+        margin-bottom: 0;
+        flex: 1;
+        font-size: 16px;
+    }
+    
+    .article-meta {
+        justify-content: flex-end;
+        gap: 16px;
+    }
+    
+    .badge-new {
+        margin-right: 12px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-title {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    
+    .articles a {
+        font-size: 16px;
+        order: -2;
+    }
+    
+    .badge-new {
+        order: -1;
+        align-self: flex-start;
+        margin-bottom: 8px;
+    }
+    
+    .article-meta {
+        margin-top: 8px;
+        gap: 8px;
+    }
+    
+    .articles span.date,
+    .articles span.autor,
+    .articles span.category {
+        font-size: 13px;
+    }
+}
