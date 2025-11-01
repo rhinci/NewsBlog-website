@@ -1,13 +1,16 @@
 {
   "python.terminal.activateEnvironment": true,
+  "python.venvPath": "venv",
+  "python.defaultInterpreterPath": "venv/bin/python",
+  
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/bin/bash",
-      "args": ["-lic", "source ${workspaceFolder}/.venv/bin/activate; exec bash"]
+      "args": ["-lic", "source ${workspaceFolder}/venv/bin/activate; exec bash"]
     },
     "zsh": {
       "path": "/bin/zsh",
-      "args": ["-lic", "source ${workspaceFolder}/.venv/bin/activate; exec zsh"]
+      "args": ["-lic", "source ${workspaceFolder}/venv/bin/activate; exec zsh"]
     }
   },
   "terminal.integrated.defaultProfile.linux": "bash",
@@ -15,11 +18,11 @@
   "terminal.integrated.profiles.osx": {
     "zsh": {
       "path": "/bin/zsh",
-      "args": ["-lic", "source ${workspaceFolder}/.venv/bin/activate; exec zsh"]
+      "args": ["-lic", "source ${workspaceFolder}/venv/bin/activate; exec zsh"]
     },
     "bash": {
       "path": "/bin/bash",
-      "args": ["-lic", "source ${workspaceFolder}/.venv/bin/activate; exec bash"]
+      "args": ["-lic", "source ${workspaceFolder}/venv/bin/activate; exec bash"]
     }
   },
   "terminal.integrated.defaultProfile.osx": "zsh",
@@ -27,14 +30,14 @@
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
       "source": "PowerShell",
-      "args": ["-NoExit", "-Command", "Set-Location -LiteralPath '${workspaceFolder}'; . '${workspaceFolder}\\\\.venv\\\\Scripts\\\\Activate.ps1'"]
+      "args": ["-NoExit", "-Command", "Set-Location -LiteralPath '${workspaceFolder}'; . '${workspaceFolder}\\\\venv\\\\Scripts\\\\Activate.ps1'"]
     },
     "Command Prompt": {
       "path": [
         "${env:windir}\\\\Sysnative\\\\cmd.exe",
         "${env:windir}\\\\System32\\\\cmd.exe"
       ],
-      "args": ["/K", "\"${workspaceFolder}\\\\.venv\\\\Scripts\\\\activate.bat\""]
+      "args": ["/K", "\"${workspaceFolder}\\\\venv\\\\Scripts\\\\activate.bat\""]
     }
   },
   "terminal.integrated.defaultProfile.windows": "PowerShell"
