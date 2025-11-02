@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -13,4 +13,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('edit-article/<int:id>/', views.edit_article, name='edit_article'),
     path('delete-article/<int:id>/', views.delete_article, name='delete_article'),
+
+    path('api/', include('blog.api_urls')),
 ]
