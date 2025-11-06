@@ -8,7 +8,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from django.db.models import Q
 
-
 class ArticleApi(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
